@@ -9,10 +9,13 @@ pipeline {
         stage('Checkout Code') {
             steps {
                 git(url: 'https://github.com/ikegabriel/node-server-pipeline', branch: 'main')
-                sh 'echo ${TAG}'
             }
         }
-
+        stage('Log') {
+            steps {
+                sh 'ls -la'
+            }
+        }
         // stage('Build Image') {
         //     steps {
         //         sh 'docker build -t node-server:${TAG} .'
