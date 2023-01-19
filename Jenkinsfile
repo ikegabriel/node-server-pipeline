@@ -5,19 +5,15 @@ pipeline {
         CONTAINER_NAME = "jenktestrun"
     }
     stages{
-        // stage('Checkout Code') {
-        //     steps {
-        //         git(url: 'https://github.com/ikegabriel/node-server-pipeline', branch: 'main')
-        //     }
-        // }
         stage('Log') {
             steps {
                 sh 'ls -la'
+                sh 'echo $BUILD_ID'
             }
         }
         // stage('Build Image') {
         //     steps {
-        //         sh 'docker build -t node-server:${TAG} .'
+        //         sh 'docker build -t node-server:${env.BUILD_ID} .'
         //     }
         // }
     
