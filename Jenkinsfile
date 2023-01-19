@@ -9,7 +9,7 @@ pipeline {
         stage('Log') {
             steps {
                 sh 'ls -la'
-                sh 'echo $BUILD_ID'
+                sh 'echo ${TAG}'
             }
         }
         // stage('Build Image') {
