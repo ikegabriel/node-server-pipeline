@@ -12,11 +12,11 @@ pipeline {
                 sh 'echo ${TAG}'
             }
         }
-        // stage('Build Image') {
-        //     steps {
-        //         sh 'docker build -t node-server:${env.BUILD_ID} .'
-        //     }
-        // }
+        stage('Build Image') {
+            steps {
+                sh 'docker build -t node-server:${TAG} .'
+            }
+        }
     
         // stage('Run Docker Container') {
         //     steps {
