@@ -2,6 +2,7 @@ pipeline {
     agent any
     environment {
         IMAGE = "ikegabriel/node-server"
+        TAG = $BUILD_ID
         CONTAINER_NAME = "jenktestrun"
     }
     stages{
