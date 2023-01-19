@@ -6,11 +6,11 @@ pipeline {
         CONTAINER_NAME = "jenktestrun"
     }
     stages{
-        stage('Checkout Code') {
-            steps {
-                git(url: 'https://github.com/ikegabriel/node-server-pipeline', branch: 'main')
-            }
-        }
+        // stage('Checkout Code') {
+        //     steps {
+        //         git(url: 'https://github.com/ikegabriel/node-server-pipeline', branch: 'main')
+        //     }
+        // }
         stage('Log') {
             steps {
                 sh 'ls -la'
