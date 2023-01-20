@@ -1,9 +1,9 @@
 pipeline {
     agent any
     environment {
-        IMAGE = "ikegabriel/node-server"
+        IMAGE = "node-server"
         TAG = "$BUILD_ID"
-        CONTAINER_NAME = "jenktestrun"
+        CONTAINER_NAME = "node-server-test"
     }
     stages{
         stage('Log') {
@@ -13,17 +13,20 @@ pipeline {
             }
         }
         stage('Build Image') {
+            agent {
+                docker {}
+            }
             steps {
                 sh 'docker build -t node-server:${TAG} .'
             }
         }
     
-        // stage('Run Docker Container') {
-        //     steps {
-        //         sh 'docker run --rm --name jenktestrun -p 8800:8000 ${IMAGE}:${TAG}&'
-        //         sh 'curl host.docker.internal:8800'
-        //         sh 'docker stop ${CONTAINER_NAME}'
-        //     }
-        // }
+        stage('Test Build') {
+            steps {
+                sh 'docker run --rm --name ${CONTAINER_NAME} -p 8800:8000 ${IMAGE}:${TAG}'
+                sh 'bash server-test.sh'
+                sh 'docker stop ${CONTAINER_NAME}'
+            }
+        }
     }    
 }
