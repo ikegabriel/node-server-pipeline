@@ -1,4 +1,4 @@
-if curl 0.0.0.0:3000
+if curl host.docker.internal:3000
 then
     echo "Passed test 1"
 else
