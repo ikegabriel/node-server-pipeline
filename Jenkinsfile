@@ -23,7 +23,7 @@ pipeline {
     
         stage('Test Build') {
             steps {
-                sh 'docker run --rm --name ${CONTAINER_NAME} -p 8800:8000 ${IMAGE}:${TAG}'
+                sh 'docker run --rm --name ${CONTAINER_NAME} -d -p 8800:8000 ${IMAGE}:${TAG}'
                 sh 'bash server-test.sh'
                 sh 'docker stop ${CONTAINER_NAME}'
             }
