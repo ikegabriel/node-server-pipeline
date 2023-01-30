@@ -13,9 +13,9 @@ pipeline {
             }
         }
         stage('Build Image') {
-            agent {
-                docker {}
-            }
+//             agent {
+//                 docker {}
+//             }
             steps {
                 sh 'docker build -t node-server:${TAG} .'
             }
